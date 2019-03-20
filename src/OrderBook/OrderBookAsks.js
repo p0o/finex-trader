@@ -8,11 +8,10 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-function OrderBookAsks() {
+function OrderBookAsks({ asks }) {
   return (
     <Container>
       <OrderBookRowHeading asks />
-      <OrderBookRow />
     </Container>
   );
 }

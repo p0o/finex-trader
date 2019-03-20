@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { connect } from 'react-redux';
+import { subscribeTicker, unsubscribeTicker } from '../actionCreators';
 import btcIcon from '../images/btc.jpg';
 
 const Container = styled.div`
   height: 100px;
   width: 400px;
   background-color: lightslategray;
+  margin-bottom: 16px;
 `;
 
 const SymbolIcon = styled.img`
@@ -44,28 +47,28 @@ const Col = styled.div`
 `;
 
 // TODO: just to scale in future. Not a good idea to import all icons like this
-function getIconBySymbol(symbol) {
-  switch (symbol) {
-    case 'BTC/USD':
+function getIconByTicker(ticker) {
+  switch (ticker) {
+    case 'BTCUSD':
       return btcIcon;
     default:
       return btcIcon;
   }
 }
 
-function Ticker({ symbol, currentPrice, low, high, change, volume }) {
+function Ticker({ ticker, price, low, high, change, volume }) {
   return (
     <Container>
       <Col>
-        <SymbolIcon src={getIconBySymbol(symbol)} />
+        <SymbolIcon src={getIconByTicker(ticker)} />
       </Col>
       <Col>
-        <Text large>{symbol}</Text>
-        <Text>VOL {volume} USD</Text>
+        <Text large>{ticker}</Text>
+        <Text>VOL {Math.floor(volume * price)} USD</Text>
         <Text>LOW {low}</Text>
       </Col>
       <Col>
-        <Text large>{currentPrice}</Text>
+        <Text large>{price.toFixed(1)}</Text>
         <Text green>{change}</Text>
         <Text>HIGH {high}</Text>
       </Col>
@@ -75,7 +78,7 @@ function Ticker({ symbol, currentPrice, low, high, change, volume }) {
 
 Ticker.propTypes = {
   symbol: PropTypes.string,
-  currentPrice: PropTypes.number,
+  price: PropTypes.number,
   low: PropTypes.number,
   high: PropTypes.number,
   change: PropTypes.number,
