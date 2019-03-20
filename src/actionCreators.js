@@ -1,20 +1,37 @@
 export const tickerTypes = {
-  LOAD_TICKER_REQUEST: 'LOAD_TICKER_REQUEST',
-  LOAD_TICKER_SUCCESS: 'LOAD_TICKER_SUCCESS',
-  LOAD_TICKER_FAILURE: 'LOAD_TICKER_FAILURE',
+  LOAD_TICKER: 'LOAD_TICKER',
 };
 
-export const loadTicker = ticker => ({
-  type: tickerTypes.LOAD_TICKER_REQUEST,
-  ticker,
-});
+export const orderBookTypes = {
+  UPDATE_BIDS: 'UPDATE_BIDS',
+  UPDATE_ASKS: 'UPDATE_ASKS',
+  REMOVE_BIDS: 'REMOVE_BIDS',
+  REMOVE_ASKS: 'REMOVE_ASKS',
+};
 
-export const loadTickerSuccess = res => ({
-  type: tickerTypes.LOAD_TICKER_SUCCESS,
+export const loadTicker = res => ({
+  type: tickerTypes.LOAD_TICKER,
   res,
 });
 
-export const loadTickerFail = err => ({
-  type: tickerTypes.LOAD_TICKER_FAILURE,
-  err,
+export const updateBids = (price, amount) => ({
+  type: orderBookTypes.UPDATE_BIDS,
+  price,
+  amount,
+});
+
+export const updateAsks = (price, amount) => ({
+  type: orderBookTypes.UPDATE_ASKS,
+  price,
+  amount,
+});
+
+export const removeAsks = price => ({
+  type: orderBookTypes.REMOVE_ASKS,
+  price,
+});
+
+export const removeBids = price => ({
+  type: orderBookTypes.REMOVE_BIDS,
+  price,
 });
