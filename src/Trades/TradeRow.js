@@ -29,8 +29,8 @@ function TradeRow({ type, time, price, amount }) {
   );
 }
 
-TradeRow.proptypes = {
-  type: PropTypes.oneOf[('buy', 'sell')],
+TradeRow.propTypes = {
+  type: PropTypes.oneOf(['buy', 'sell']),
   time: PropTypes.string,
   price: PropTypes.number,
   amount: PropTypes.number,
