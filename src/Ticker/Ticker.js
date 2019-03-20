@@ -7,6 +7,7 @@ const Container = styled.div`
   height: 100px;
   width: 400px;
   background-color: lightslategray;
+  margin-bottom: 16px;
 `;
 
 const SymbolIcon = styled.img`

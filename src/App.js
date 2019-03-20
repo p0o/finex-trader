@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import Trades from './Trades/Trades';
+import Ticker from './Ticker/Ticker';
+import OrderBook from './OrderBook/OrderBook';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const Main = styled.div`
+  margin: auto;
+  width: 1160px;
+`;
+
+const Col = styled.div`
+  margin: 15px 0 0 30px;
+  float: left;
+  display: inline-block;
+`;
+
+function App() {
+  return (
+    <Main>
+      <Col>
+        <Ticker />
+        <Trades />
+      </Col>
+      <Col>
+        <OrderBook />
+      </Col>
+    </Main>
+  );
 }
 
 export default App;
