@@ -5,4 +5,5 @@ import trades from './tradesReducer';
 
 export default combineReducers({
   ticker,
+  orderBook,
 });

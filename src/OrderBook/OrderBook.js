@@ -9,12 +9,12 @@ const Container = styled.div`
   background-color: lightslategray;
 `;
 
-function OrderBook() {
+function OrderBook({ asks, bids }) {
   return (
     <Container>
       <OrderBookHeader symbol="BTC/USD" />
-      <OrderBookAsks />
-      <OrderBookBids />
+      <OrderBookBids bids={bids} />
+      <OrderBookAsks asks={asks} />
     </Container>
   );
 }
